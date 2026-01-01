@@ -1,4 +1,4 @@
-name: Deploy Build to GitHub
+name: Build for Hostinger
 
 on:
   push:
@@ -15,14 +15,14 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 20
-        cache: 'npm'
 
     - name: Build Project
       run: |
         npm install
-        npm run build
+        npm run build --if-present
+
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: carpeta-dist-lista
+        name: web-lista-para-hostinger
         path: dist/
