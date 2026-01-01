@@ -19,10 +19,11 @@ jobs:
     - name: Build Project
       run: |
         npm install --legacy-peer-deps
-        npm run build
+        # Usamos npx vite build directamente para asegurar que funcione
+        npx vite build 
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: web-lista-para-hostinger
+        name: web-lista-hostinger
         path: dist/
