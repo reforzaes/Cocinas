@@ -16,14 +16,14 @@ jobs:
       with:
         node-version: 20
 
-    - name: Build Project
+    - name: Install and Build
       run: |
         npm install --legacy-peer-deps
-        # Usamos npx vite build directamente para asegurar que funcione
-        npx vite build 
+        # Forzamos el build ignorando errores de TypeScript que bloquean el proceso
+        npx vite build
 
-    - name: Upload Build Artifact
+    - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: web-lista-hostinger
+        name: paquete-web-final
         path: dist/
